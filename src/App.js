@@ -29,25 +29,6 @@ class App extends Component {
         };
     }
 
-
-    flakes = () => {
-        let flake = [];
-
-        for (let i = 0; i < 100; i++) {
-            flake.push(
-                <div key={"snowflake" + i} className="snowflake">
-                    .
-                </div>
-            )
-        }
-
-        return (
-            <div className="snowflakes">
-                {flake}
-            </div>
-        );
-    };
-
     toggleCartList = () => {
         this.setState({
             showCartList: !this.state.showCartList
@@ -259,7 +240,6 @@ class App extends Component {
                 <div className="row">
                     <div className="col-lg-12 top_nav_stamp"
                          style={{padding: "1em", background: "#ffcae5", marginBottom: ".5em"}}>
-                        {this.flakes()}
                         <div className="row">
                             <div className="col-lg-3" style={{textAlign: "left"}}>
                                 <a href="/" style={{textDecoration: "none"}}>
@@ -312,6 +292,54 @@ class App extends Component {
                                     updateCart={this.updateCart}
                         /> : null
                 }
+                <div className="row d-flex flex-row justify-content-between" style={{marginTop: "5em", background: "#f3d3e3",
+    color: "#ce3685", padding: "1em", fontSize: "9pt"}}>
+                    <div className="p-2 col-lg-8 col-md-8 col-sm-1" style={{textAlign:"left"}}>
+
+                        <h5>Products from Japan</h5>
+                        <div className="d-flex flex-row justify-content-between">
+                            <div className="p-2">
+                                <ul style={{padding: "0"}}>
+                                    <li>Acne spot remover cream</li>
+                                    <li>Pregnancy spot prevention cream</li>
+                                    <li>Skin whitening and moisturizer cream</li>
+                                    <li>Beauty face mask</li>
+                                    <li>Female menstrual pain remover</li>
+                                </ul>
+                            </div>
+                            <div className="p-2">
+                                <ul style={{padding: "0"}}>
+                                    <li>Men hair growth</li>
+                                    <li>Elders' Knee & Joint pain remover</li>
+                                </ul>
+                            </div>
+                            <div className="p-2">
+                                <ul style={{padding: "0"}}>
+                                    <li>Baby medicated body soap</li>
+                                    <li>Baby medicated shampoo</li>
+                                    <li>Baby milk powder for 0 - 1 year age</li>
+                                    <li>Baby milk powder for 1 - 2 year age</li>
+                                </ul>
+                            </div>
+                            <div className="p-2">
+                                <ul style={{padding: "0"}}>
+                                    <li>Mosquito repellent</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-2 col-lg-3 col-md-3 col-sm-1" style={{textAlign:"left"}}>
+                        <h5>Contact Us</h5>
+                        <p>
+                            Monozuna Trade<br/><br/>
+                            Dhaka Office:
+                            <br/><br/>
+                            Japan Office:<br/>
+                            814-023, 福岡市早良区原田<br/>
+                            Mobile: +81 070 2162 6806<br/>
+                        </p>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -24,25 +24,18 @@ class Product extends Component {
 
     render() {
         return (
-            <div
-                className="col-lg-3 col-md-6 col-sm-1 ProductThumb"
-                style={{
-                    minHeight: "300px",
-                    margin: "0 0 1em 0",
-                    padding: ".6em"
-                }}
-            >
+            <div className="d-flex flex-column p-2 col-lg-3 col-md-3 col-sm-1 ProductThumb">
                 <Link
                     to={"/products/" + this.props.product.category + "/" + this.props.product.id}>
-                    <div>
+                    <div className="p-2">
                         <img
                             src={this.props.product.images[0]}
                             className=""
-                            style={{width: "70%", objectFit: "cover"}}
+                            style={{maxHeight: "200px", padding: ".5em"}}
                             alt="thumb"
                         />
                     </div>
-                    <div className="text-left">
+                    <div className="text-center" style={{padding:".1em"}}>
                         <p style={{marginTop: ".5em", marginBottom: ".1em"}}>
                             {this.props.product.name}
                         </p>

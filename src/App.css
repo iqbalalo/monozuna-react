@@ -25,6 +25,7 @@
 
 .ProductThumb:hover {
   border: 1px dashed #ddd;
+  border-radius: 8px;
 }
 
 .ProductThumb a {
