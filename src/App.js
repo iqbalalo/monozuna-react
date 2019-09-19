@@ -1,26 +1,320 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import "./bootstrap/css/bootstrap.min.css";
+import "./font_awesome/css/font-awesome.min.css";
 import './App.css';
+import Products from "./components/Products";
+import {Route} from "react-router-dom";
+import ProductDetail from "./components/ProductDetail";
+import Cart from "./components/Cart";
+import CartDetail from "./components/CartDetail";
+import PlaceOrder from "./components/PlaceOrder";
+import Success from "./components/Success";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const deepClone = require('lodash/cloneDeep');
+const axios = require('axios');
+const basketId = localStorage.getItem('basket_id');
+
+
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedMenuItem: "All",
+            cartTotalItem: 0,
+            cartCost: 0,
+            cartItemList: [],
+            showCartList: false
+        };
+    }
+
+
+    flakes = () => {
+        let flake = [];
+
+        for (let i = 0; i < 100; i++) {
+            flake.push(
+                <div key={"snowflake" + i} className="snowflake">
+                    .
+                </div>
+            )
+        }
+
+        return (
+            <div className="snowflakes">
+                {flake}
+            </div>
+        );
+    };
+
+    toggleCartList = () => {
+        this.setState({
+            showCartList: !this.state.showCartList
+        });
+    };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("Component update", this.state);
+    }
+
+    componentWillMount() {
+        this.getBasketInfo(basketId);
+    }
+
+    getBasketInfo = (basketId) => {
+        var self = this;
+        axios.get('https://8dxyapw3pb.execute-api.ap-northeast-1.amazonaws.com/dev/basket/'+basketId)
+            .then(function (response) {
+                console.log(response.data);
+
+                var cartItems = response.data;
+                var cartCost = 0;
+                var cartTotalItem = 0;
+
+                for (var i = 0; i < cartItems.length; i++) {
+                    cartCost = parseInt(cartCost) + (parseInt(cartItems[i].qty) * parseInt(cartItems[i].unit_price));
+                    cartTotalItem = parseInt(cartTotalItem) + parseInt(cartItems[i].qty);
+                }
+
+                self.setState({
+                    cartTotalItem: cartTotalItem,
+                    cartCost: cartCost,
+                    cartItemList: cartItems
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
+    addToCart = (item) => {
+        console.log("Add to cart", item);
+
+        var product = deepClone(item);
+        var cartProduct = null;
+
+        var cartItemList = this.state.cartItemList.length > 0 ? this.state.cartItemList : [];
+        var cartCost = 0;
+        var cartTotalItem = 0;
+
+        var cartItemExist = false;
+        for (var i = 0; i < cartItemList.length; i++) {
+            if (cartItemList[i].id === product.id) {
+                cartItemList[i].qty = parseInt(cartItemList[i].qty) + parseInt(product.qty);
+                cartProduct = deepClone(cartItemList[i]);
+                cartItemExist = true;
+                break;
+            }
+        }
+
+        if (!cartItemExist) {
+            console.log("cartItemList",cartItemList);
+            cartItemList.push(product);
+            cartProduct = deepClone(product);
+        }
+
+        for (var i = 0; i < cartItemList.length; i++) {
+            cartCost = parseInt(cartCost) + (parseInt(cartItemList[i].qty) * parseInt(cartItemList[i].unit_price));
+            cartTotalItem = parseInt(cartTotalItem) + parseInt(cartItemList[i].qty);
+        }
+
+        this.setState({
+            cartTotalItem: cartTotalItem,
+            cartCost: cartCost,
+            cartItemList: cartItemList,
+            showCartList: false
+        });
+        console.log("cart info", cartTotalItem, cartCost, cartItemList);
+        console.log("cart product", cartProduct);
+        this.updateDB(cartProduct);
+    };
+
+    updateDB = (p) => {
+        if (basketId.length > 5) {
+            axios.put('https://8dxyapw3pb.execute-api.ap-northeast-1.amazonaws.com/dev/basket', {
+                "basket_id": basketId,
+                "category": p.category,
+                "currency": p.currency,
+                "discount": p.discount,
+                "product_id": p.id,
+                "unit": p.unit,
+                "unit_price": p.unit_price,
+                "qty": p.qty,
+                "vat": 0,
+                "created": new Date()
+            })
+                .then(function (response) {
+                    console.log("updateDB", response.data);
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        } else {
+            axios.post('https://8dxyapw3pb.execute-api.ap-northeast-1.amazonaws.com/dev/basket', {
+                "category": p.category,
+                "currency": p.currency,
+                "discount": p.discount,
+                "product_id": p.id,
+                "unit": p.unit,
+                "unit_price": p.unit_price,
+                "qty": p.qty,
+                "tax": 0,
+                "created": new Date()
+            })
+                .then(function (response) {
+                    console.log("updateDB", response.data);
+
+                    localStorage.setItem('basket_id', response.data.basket_id);
+
+                    // self.setState({
+                    //     product: response.data[0]
+                    // });
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+    };
+
+    deleteFromDB = (basketId, productId) => {
+        axios.delete('https://8dxyapw3pb.execute-api.ap-northeast-1.amazonaws.com/dev/basket/'+basketId+"/"+productId)
+                .then(function (response) {
+                    console.log("deleteFromDB", response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+    };
+
+    removeFromCart = (item) => {
+        console.log("remove from cart", item);
+
+        var product = deepClone(item);
+
+        var cartItemList = this.state.cartItemList;
+        var cartCost = 0;
+        var cartTotalItem = 0;
+
+        for (var i = 0; i < cartItemList.length; i++) {
+            if (cartItemList[i].id === product.id) {
+                cartItemList.splice(i, 1);
+            }
+        }
+
+        for (var i = 0; i < cartItemList.length; i++) {
+            cartCost = parseInt(cartCost) + (parseInt(cartItemList[i].qty) * parseInt(cartItemList[i].unit_price));
+            cartTotalItem = parseInt(cartTotalItem) + parseInt(cartItemList[i].qty);
+        }
+
+        this.setState({
+            cartTotalItem: cartTotalItem,
+            cartCost: cartCost,
+            cartItemList: cartItemList
+        });
+        var basket_id = localStorage.getItem('basket_id');
+
+        this.deleteFromDB(basket_id, product.id);
+    };
+
+    updateCart = (item) => {
+        console.log("update cart", item);
+
+        var product = deepClone(item);
+        var cartProduct = null;
+
+        var cartItemList = this.state.cartItemList;
+        var cartCost = 0;
+        var cartTotalItem = 0;
+
+        for (var i = 0; i < cartItemList.length; i++) {
+            if (cartItemList[i].id === product.id) {
+                cartItemList[i] = product;
+                cartProduct = deepClone(cartItemList[i]);
+            }
+        }
+
+        for (var i = 0; i < cartItemList.length; i++) {
+            cartCost = parseInt(cartCost) + (parseInt(cartItemList[i].qty) * parseInt(cartItemList[i].unit_price));
+            cartTotalItem = parseInt(cartTotalItem) + parseInt(cartItemList[i].qty);
+        }
+
+        this.setState({
+            cartTotalItem: cartTotalItem,
+            cartCost: cartCost,
+            cartItemList: cartItemList
+        });
+        this.updateDB(cartProduct);
+    };
+
+    placeOrder = () => {
+
+    };
+
+    render() {
+        return (
+            <div className="App container-fluid">
+                <div className="row">
+                    <div className="col-lg-12 top_nav_stamp"
+                         style={{padding: "1em", background: "#ffcae5", marginBottom: ".5em"}}>
+                        {this.flakes()}
+                        <div className="row">
+                            <div className="col-lg-3" style={{textAlign: "left"}}>
+                                <a href="/" style={{textDecoration: "none"}}>
+                                    <span style={{fontWeight: "bold", color: "#eb3479", fontSize: "24pt"}}>monozuna</span>
+                                </a>
+                            </div>
+                            <div className="col">
+                                <div className="input-group mb-3">
+                                    {/*<input className="form-control" placeholder="Search"*/}
+                                    {/*       style={{borderColor: "#ffaed7"}}/>*/}
+                                    {/*<div className="input-group-append">*/}
+                                    {/*    <button className="btn btn-outline-danger" type="button" id="button-addon2">*/}
+                                    {/*        <i className="fas fa-search"/></button>*/}
+                                    {/*</div>*/}
+                                    <span style={{width: "100%", padding: ".3em", background: "white", border:'1px solid black', fontSize: "20pt", fontWeight: "bold"}}>Call for Order: 000000000</span>
+                                </div>
+                            </div>
+                            <div className="col-lg-3" style={{textAlign: "right"}}>
+                                <Cart cartTotalItem={this.state.cartTotalItem}
+                                      cartCost={this.state.cartCost}
+                                      cartItems={this.state.cartItemList}
+                                      toggleCartList={this.toggleCartList}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    {/*<div className="col-lg-2">*/}
+                    {/*    <CategoryMenu/>*/}
+                    {/*</div>*/}
+                    <div className="col-lg-12">
+                        <Route path="/" exact={true} component={Products}/>
+                        <Route path="/products/:cat" exact={true} component={Products}/>
+                        <Route path="/products/" exact={true} component={Products}/>
+                        <Route path="/products/:cat/:id" exact={true}
+                               render={(routeProps) => (<ProductDetail {...routeProps} addToCart={this.addToCart}/>)}/>
+                        <Route path="/order/" exact={true}
+                               render={(routeProps) => (<PlaceOrder {...routeProps}/>)}/>
+                        <Route path="/success/:id" exact={true} component={Success}/>
+                    </div>
+                </div>
+
+                {
+                    this.state.showCartList ?
+                        <CartDetail cartTotalItem={this.state.cartTotalItem} cartItemList={this.state.cartItemList}
+                                    cartCost={this.state.cartCost}
+                                    toggleCartList={this.toggleCartList}
+                                    removeFromCart={this.removeFromCart}
+                                    updateCart={this.updateCart}
+                        /> : null
+                }
+            </div>
+        );
+    }
 }
 
 export default App;
