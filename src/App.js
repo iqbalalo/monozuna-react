@@ -112,7 +112,7 @@ class App extends Component {
     };
 
     updateDB = (p) => {
-        if (basketId.length > 5) {
+        if (basketId && basketId.length> 5) {
             axios.put('https://8dxyapw3pb.execute-api.ap-northeast-1.amazonaws.com/dev/basket', {
                 "basket_id": basketId,
                 "category": p.category,
