@@ -230,18 +230,14 @@ class App extends Component {
         this.updateDB(cartProduct);
     };
 
-    placeOrder = () => {
-
-    };
-
     render() {
         return (
             <div className="App container-fluid">
                 <div className="row">
-                    <div className="col-lg-12 top_nav_stamp"
+                    <div className="col-lg-12 col-md-12 col-sm-1 top_nav_stamp"
                          style={{padding: "1em", background: "#ffcae5", marginBottom: ".5em"}}>
                         <div className="row">
-                            <div className="col-lg-3" style={{textAlign: "left"}}>
+                            <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "left"}}>
                                 <a href="/" style={{textDecoration: "none"}}>
                                     <span style={{fontWeight: "bold", color: "#eb3479", fontSize: "24pt"}}>monozuna</span>
                                 </a>
@@ -254,10 +250,10 @@ class App extends Component {
                                     {/*    <button className="btn btn-outline-danger" type="button" id="button-addon2">*/}
                                     {/*        <i className="fas fa-search"/></button>*/}
                                     {/*</div>*/}
-                                    <span style={{width: "100%", padding: ".3em", background: "white", border:'1px solid black', fontSize: "20pt", fontWeight: "bold"}}>Call for Order: 000000000</span>
+                                    <span style={{width: "100%", padding: ".5em", background: "white", borderRadius:"8px", fontSize: "20pt", fontWeight: "bold"}}>Call for Order: 000000000</span>
                                 </div>
                             </div>
-                            <div className="col-lg-3" style={{textAlign: "right"}}>
+                            <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "right"}}>
                                 <Cart cartTotalItem={this.state.cartTotalItem}
                                       cartCost={this.state.cartCost}
                                       cartItems={this.state.cartItemList}
