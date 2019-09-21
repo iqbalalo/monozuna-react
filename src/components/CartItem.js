@@ -36,28 +36,25 @@ class CartItem extends React.Component {
                 border: "1px solid rgb(238, 238, 238)",
                 borderRadius: "6px"}}>
 
-                <div className="col-2">
-                    <a href="#"><img style={{height: "100%", width: "100%", objectFit: "cover"}} src={this.state.item.images.length > 1 ? this.state.item.images[0]: this.state.item.images}/></a>
+                <div className="col-lg-2 col-md-2 col-sm-1">
+                    <a href="#"><img style={{maxHeight: "100px"}} src={this.state.item.images.length > 1 ? this.state.item.images[0]: this.state.item.images}/></a>
                 </div>
-                <div className="col" style={{textAlign: "left"}}>
+                <div className="col-lg-7 col-md-7 col-sm-1" style={{textAlign: "left"}}>
                     <a href="#">{this.state.item.name}</a>
-                    <p>
-                        Description
-                    </p>
-                    <p>
+                    <p style={{marginTop: "1em"}}>
                         <span>Qty. </span>
                         <select value={this.state.item.qty} onChange={this.updateCart}>
                             {_.range(1,101).map((i) => (
                                 <option key={"qtyOpt" + i} value={i}>{i}</option>
                             ))}
                         </select>
-                        <span style={{marginLeft: "1em", fontSize:"10pt"}}>Unit Price: {this.state.item.unit_price} {this.state.item.currency}</span>
+                        <span style={{ display: "block", fontSize:"10pt", marginTop: ".5em"}}>Unit Price: {this.state.item.unit_price} {this.state.item.currency}</span>
                     </p>
                 </div>
-                <div className="col-2" style={{textAlign: "right"}}>
+                <div className="col-lg-2 col-md-2 col-sm-1" style={{textAlign: "right"}}>
                     <span style={{fontWeight: "500", color:"red"}}>{this.state.item.unit_price * this.state.item.qty} {this.state.item.currency}</span>
                 </div>
-                <div className="col-1" style={{textAlign: "right"}}>
+                <div className="col-lg-1 col-md-1 col-sm-1" style={{textAlign: "right"}}>
                     <a href="#" style={{color: "#999"}}
                        onClick={this.removeFromCart}
                     title="Delete" ><i className="fas fa-times"/></a>

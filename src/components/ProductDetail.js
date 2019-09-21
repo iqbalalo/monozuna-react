@@ -80,10 +80,10 @@ class ProductDetail extends React.Component {
                 <Breadcrumbs levels={window.location.pathname}/>
 
                 <div className="row" style={{margin: "2em 0"}}>
-                    <div className="col" style={{textAlign: "left", flex: "0 1 40%"}}>
+                    <div className="col-lg-3 col-md-3 col-sm-1" style={{textAlign: "center"}}>
                         {
                             this.state.product.images.map((i, ix) => (
-                                <img key={"img-" + i.id + ix} src={i} className="" style={{width: "95%", objectFit: "cover"}} alt="thumb"/>
+                                <img key={"img-" + i.id + ix} src={i} className="" style={{maxHeight: "510px", marginBottom: "1em"}} alt="thumb"/>
                             ))
                         }
                     </div>
@@ -115,8 +115,7 @@ class ProductDetail extends React.Component {
                                     style={{marginTop: "2em"}}><i className="fas fa-shopping-bag"/> Add to Bag
                             </button>
                         </p>
-                        <p style={{textAlign: "justify", marginTop: "2em"}}>
-                            {this.state.product.description}
+                        <p style={{textAlign: "justify", marginTop: "2em", fontSize: "10pt"}} dangerouslySetInnerHTML={{__html: this.state.product.description}}>
                         </p>
                     </div>
                 </div>

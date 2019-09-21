@@ -5,7 +5,8 @@ import Breadcrumbs from "./Breadcrumbs";
 class Products extends Component {
     state = {
         category: null,
-        products: []
+        products: [],
+        productLoading: true
     };
 
     componentWillMount() {
@@ -36,8 +37,10 @@ class Products extends Component {
                 console.log("filter products by", filterProducts);
 
                 self.setState({
-                    products: filterProducts
+                    products: filterProducts,
+                    productLoading: false
                 });
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -53,6 +56,7 @@ class Products extends Component {
             <div>
                 <Breadcrumbs levels={window.location.pathname}/>
                 <div className="row" style={{margin: "2em 0"}}>
+                    {this.state.productLoading ? <div>Please wait! Loading...</div> : ""}
 
                     <React.Fragment>
                         {this.state.products.map(p => (
