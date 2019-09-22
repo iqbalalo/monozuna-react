@@ -9,7 +9,8 @@ class Success extends Component {
         }
     }
 
-    componentWillMount() {
+
+    componentDidMount() {
         let path = window.location.pathname;
         let levels = path.split("/").filter(item => item);
         let orderNo = levels[levels.length-1];

@@ -111,7 +111,7 @@ class PlaceOrder extends Component {
                 console.log(response.data);
                 if(response.data["basket_id"] === basketId) {
                     localStorage.setItem('basket_id', null);
-                    window.location = "/success/" + basketId
+                    self.props.history.push('/success/' + basketId);
                 }
             })
             .catch(function (error) {
