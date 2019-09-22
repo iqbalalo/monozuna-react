@@ -24,17 +24,17 @@ class Products extends Component {
         var self = this;
         const axios = require('axios');
 
-        console.log("category", self.state.category);
+        // console.log("category", self.state.category);
 
         axios.get('https://8dxyapw3pb.execute-api.ap-northeast-1.amazonaws.com/dev/products')
             .then(function (response) {
-                console.log("product list", response.data);
+                // console.log("product list", response.data);
 
                 let filterProducts = response.data.filter(p => {
                     return p.category === self.state.category || self.state.category==="products" || self.state.category===undefined
                 });
 
-                console.log("filter products by", filterProducts);
+                // console.log("filter products by", filterProducts);
 
                 self.setState({
                     products: filterProducts,

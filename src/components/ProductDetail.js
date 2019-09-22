@@ -1,6 +1,7 @@
 import React from "react";
 import Breadcrumbs from "./Breadcrumbs";
 import * as _ from "lodash";
+import Product from "./Product";
 
 
 const axios = require('axios');
@@ -12,7 +13,9 @@ class ProductDetail extends React.Component {
             name:"Product Name",
             unit: "",
             unit_price: 0,
-            images:[]
+            images:[],
+            tags:[],
+            tags_image:[]
         }
     };
 
@@ -73,21 +76,20 @@ class ProductDetail extends React.Component {
         });
     };
 
-
     render() {
         return (
             <div>
                 <Breadcrumbs levels={window.location.pathname}/>
 
                 <div className="row" style={{margin: "2em 0"}}>
-                    <div className="col-lg-3 col-md-3 col-sm-1" style={{textAlign: "center"}}>
+                    <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "center"}}>
                         {
                             this.state.product.images.map((i, ix) => (
-                                <img key={"img-" + i.id + ix} src={i} className="" style={{maxHeight: "510px", marginBottom: "1em"}} alt="thumb"/>
+                                <img key={"img-" + i.id + ix} src={i} className="" style={{maxHeight: "510px", maxWidth:"100%", marginBottom: "1em"}} alt="thumb"/>
                             ))
                         }
                     </div>
-                    <div className="col" style={{textAlign: "left"}}>
+                    <div className="col-lg-8 col-md-8 col-sm-1" style={{textAlign: "left"}}>
 
                         <h4>{this.state.product.name}</h4>
                         <p style={{marginTop: "1em", marginBottom: "1em", color: "#ff77bc", fontSize: "14pt"}}>
@@ -114,6 +116,13 @@ class ProductDetail extends React.Component {
                             <button onClick={this.addToCart} className="btn btn-outline-danger"
                                     style={{marginTop: "2em"}}><i className="fas fa-shopping-bag"/> Add to Bag
                             </button>
+                        </p>
+                        <p style={{marginTop: "2em"}}>
+                            {
+                                this.state.product.tags_image.map((i, ix) => (
+                                    <img key={this.state.product.tags[ix]} src={i} className="" style={{maxHeight:"75px", maxWidth: "100px"}} alt={this.state.product.tags[ix]}/>
+                                ))
+                            }
                         </p>
                         <p style={{textAlign: "justify", marginTop: "2em", fontSize: "10pt"}} dangerouslySetInnerHTML={{__html: this.state.product.description}}>
                         </p>
