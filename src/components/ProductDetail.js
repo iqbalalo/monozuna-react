@@ -1,25 +1,26 @@
 import React from "react";
 import Breadcrumbs from "./Breadcrumbs";
 import * as _ from "lodash";
-import Product from "./Product";
-
 
 const axios = require('axios');
 
 class ProductDetail extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            product: {
+                name:"Product Name",
+                unit: "",
+                unit_price: 0,
+                images:[],
+                tags:[],
+                tags_image:[]
+            }
+        };
 
-    state = {
-        product: {
-            name:"Product Name",
-            unit: "",
-            unit_price: 0,
-            images:[],
-            tags:[],
-            tags_image:[]
-        }
-    };
+    }
 
-    componentWillMount() {
+    componentDidMount() {
         let path = window.location.pathname;
         let levels = path.split("/").filter(item => item);
         let cat = levels[levels.length - 2];
@@ -42,7 +43,7 @@ class ProductDetail extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-    };
+    }
 
     addToCart = () => {
         this.props.addToCart(this.state.product);

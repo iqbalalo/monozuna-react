@@ -37,10 +37,10 @@ class CartItem extends React.Component {
                 borderRadius: "6px"}}>
 
                 <div className="col-lg-2 col-md-2 col-sm-1">
-                    <a href="#"><img style={{maxHeight: "100px"}} src={this.state.item.images.length > 1 ? this.state.item.images[0]: this.state.item.images}/></a>
+                    <img style={{maxHeight: "100px"}} src={this.state.item.images.length > 1 ? this.state.item.images[0]: this.state.item.images} alt="thumb"/>
                 </div>
                 <div className="col-lg-7 col-md-7 col-sm-1" style={{textAlign: "left"}}>
-                    <a href="#">{this.state.item.name}</a>
+                    <a href={"/products/" + this.state.item.category + "/" + this.state.item.id}>{this.state.item.name}</a>
                     <p style={{marginTop: "1em"}}>
                         <span>Qty. </span>
                         <select value={this.state.item.qty} onChange={this.updateCart}>
@@ -55,9 +55,9 @@ class CartItem extends React.Component {
                     <span style={{fontWeight: "500", color:"red"}}>{this.state.item.unit_price * this.state.item.qty} {this.state.item.currency}</span>
                 </div>
                 <div className="col-lg-1 col-md-1 col-sm-1" style={{textAlign: "right"}}>
-                    <a href="#" style={{color: "#999"}}
+                    <button className="btn btn-link" style={{color: "#999"}}
                        onClick={this.removeFromCart}
-                    title="Delete" ><i className="fas fa-times"/></a>
+                    title="Delete" ><i className="fas fa-times"/></button>
                 </div>
             </div>
         );

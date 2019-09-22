@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import { withRouter } from 'react-router-dom';
 
 const axios = require('axios');
 
@@ -62,7 +61,7 @@ class PlaceOrder extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getBasketInfo();
     }
 
@@ -109,7 +108,7 @@ class PlaceOrder extends Component {
             "shipping_charge": 0
         })
             .then(function (response) {
-                // console.log(response.data);
+                console.log(response.data);
                 if(response.data["basket_id"] === basketId) {
                     localStorage.setItem('basket_id', null);
                     window.location = "/success/" + basketId
