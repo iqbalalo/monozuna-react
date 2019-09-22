@@ -32,9 +32,8 @@ class CartDetail extends Component {
                             <h4 style={{}}>Cart Items</h4>
                         </div>
                         <div className="col" style={{textAlign: "right"}}>
-                            <a href="#" style={{textDecoration: "none", color: "black"}}
-                               onClick={this.props.toggleCartList}
-                            ><i className="fas fa-2x fa-times-circle"/></a>
+                            <button className="btn btn-link" style={{color:"black"}} onClick={this.props.toggleCartList}
+                            ><i className="fas fa-2x fa-times-circle"/></button>
                         </div>
                     </div>
                     <div style={{height: "400px", overflow: "scroll"}}>

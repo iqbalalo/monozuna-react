@@ -35,7 +35,7 @@ class App extends Component {
         });
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.getBasketInfo(basketId);
     }
 
@@ -91,7 +91,7 @@ class App extends Component {
             cartProduct = deepClone(product);
         }
 
-        for (var i = 0; i < cartItemList.length; i++) {
+        for (i = 0; i < cartItemList.length; i++) {
             cartCost = parseInt(cartCost) + (parseInt(cartItemList[i].qty) * parseInt(cartItemList[i].unit_price));
             cartTotalItem = parseInt(cartTotalItem) + parseInt(cartItemList[i].qty);
         }
@@ -137,7 +137,7 @@ class App extends Component {
                 "unit": p.unit,
                 "unit_price": p.unit_price,
                 "qty": p.qty,
-                "tax": 0,
+                "vat": 0,
                 "created": new Date()
             })
                 .then(function (response) {
@@ -181,7 +181,7 @@ class App extends Component {
             }
         }
 
-        for (var i = 0; i < cartItemList.length; i++) {
+        for (i = 0; i < cartItemList.length; i++) {
             cartCost = parseInt(cartCost) + (parseInt(cartItemList[i].qty) * parseInt(cartItemList[i].unit_price));
             cartTotalItem = parseInt(cartTotalItem) + parseInt(cartItemList[i].qty);
         }
@@ -213,7 +213,7 @@ class App extends Component {
             }
         }
 
-        for (var i = 0; i < cartItemList.length; i++) {
+        for (i = 0; i < cartItemList.length; i++) {
             cartCost = parseInt(cartCost) + (parseInt(cartItemList[i].qty) * parseInt(cartItemList[i].unit_price));
             cartTotalItem = parseInt(cartTotalItem) + parseInt(cartItemList[i].qty);
         }
@@ -332,7 +332,7 @@ class App extends Component {
                             <br/><br/>
                             Japan Office:<br/>
                             814-023, 福岡市早良区原田<br/>
-                            Mobile: +81 070 2162 6806<br/>
+                            Mobile: +81 70 2162 6806<br/>
                         </p>
                     </div>
                 </div>
