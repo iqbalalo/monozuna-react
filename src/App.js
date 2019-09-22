@@ -235,8 +235,9 @@ class App extends Component {
                         <div className="row">
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "left"}}>
                                 <a href="/" style={{textDecoration: "none"}}>
-                                    <span style={{fontWeight: "bold", color: "#eb3479", fontSize: "24pt"}}>monozuna</span>
-                                    <span style={{display:"block",color: "#ce3685", fontSize: "9pt"}}>Local Product to Global People</span>
+                                    <span style={{display:"block",　color: "#eb3479", fontSize: "8pt", position: "absolute"}}>モノツナ</span>
+                                    <span style={{display:"block",　fontWeight: "bold", color: "#eb3479", fontSize: "24pt"}}>monozuna</span>
+                                    <span style={{display:"block",　color: "#ce3685", fontSize: "9pt"}}>Japanese product for global people</span>
                                 </a>
                             </div>
                             <div className="col">
@@ -248,7 +249,7 @@ class App extends Component {
                                     {/*        <i className="fas fa-search"/></button>*/}
                                     {/*</div>*/}
                                     <span style={{fontFamily: "Futura", width: "100%",  fontSize: "14pt"}}>Call Us (9am to 6pm)</span>
-                                    <span style={{fontFamily: "Futura", width: "100%",  fontSize: "26pt", fontWeight:"500"}}>00000000000</span>
+                                    <span style={{fontFamily: "Futura", width: "100%", color:"brown",  fontSize: "24pt", fontWeight:"500"}}>01701039313</span>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "right"}}>
@@ -327,7 +328,7 @@ class App extends Component {
                         <p>
                             Monozuna Trade<br/><br/>
                             Bangladesh Office:<br/>
-                            Savar-1349
+                            Ashulia, Savar EPZ
                             <br/><br/>
                             Japan Office:<br/>
                             814-023, 福岡市早良区原田<br/>
