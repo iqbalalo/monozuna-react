@@ -29,7 +29,7 @@ class PlaceOrder extends Component {
         var self = this;
         axios.get('https://8dxyapw3pb.execute-api.ap-northeast-1.amazonaws.com/dev/basket/' + basketId)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
 
                 var cartItems = response.data;
                 var cartCost = 0;
@@ -57,8 +57,6 @@ class PlaceOrder extends Component {
     };
 
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log(nextProps);
-
         if (nextProps.location.state === 'desiredState') {
             this.getBasketInfo();
         }
@@ -111,7 +109,7 @@ class PlaceOrder extends Component {
             "shipping_charge": 0
         })
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 if(response.data["basket_id"] === basketId) {
                     localStorage.setItem('basket_id', null);
                     window.location = "/success/" + basketId

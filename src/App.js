@@ -35,10 +35,6 @@ class App extends Component {
         });
     };
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("Component update", this.state);
-    }
-
     componentWillMount() {
         this.getBasketInfo(basketId);
     }
@@ -171,7 +167,7 @@ class App extends Component {
     };
 
     removeFromCart = (item) => {
-        console.log("remove from cart", item);
+        // console.log("remove from cart", item);
 
         var product = deepClone(item);
 
@@ -201,7 +197,7 @@ class App extends Component {
     };
 
     updateCart = (item) => {
-        console.log("update cart", item);
+        // console.log("update cart", item);
 
         var product = deepClone(item);
         var cartProduct = null;
@@ -240,6 +236,7 @@ class App extends Component {
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "left"}}>
                                 <a href="/" style={{textDecoration: "none"}}>
                                     <span style={{fontWeight: "bold", color: "#eb3479", fontSize: "24pt"}}>monozuna</span>
+                                    <span style={{display:"block",color: "#ce3685", fontSize: "9pt"}}>Local Product to Global People</span>
                                 </a>
                             </div>
                             <div className="col">
@@ -250,7 +247,8 @@ class App extends Component {
                                     {/*    <button className="btn btn-outline-danger" type="button" id="button-addon2">*/}
                                     {/*        <i className="fas fa-search"/></button>*/}
                                     {/*</div>*/}
-                                    <span style={{width: "100%", padding: ".5em", background: "white", borderRadius:"8px", fontSize: "20pt", fontWeight: "bold"}}>Call for Order: 000000000</span>
+                                    <span style={{fontFamily: "Futura", width: "100%",  fontSize: "14pt"}}>Call Us (9am to 6pm)</span>
+                                    <span style={{fontFamily: "Futura", width: "100%",  fontSize: "26pt", fontWeight:"500"}}>00000000000</span>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "right"}}>
@@ -289,7 +287,7 @@ class App extends Component {
                         /> : null
                 }
                 <div className="row d-flex flex-row justify-content-between" style={{marginTop: "5em", background: "#f3d3e3",
-    color: "#ce3685", padding: "1em", fontSize: "9pt"}}>
+    color: "#ce3685", padding: "1em", fontSize: "9pt", position:"relative", bottom:0}}>
                     <div className="p-2 col-lg-8 col-md-8 col-sm-1" style={{textAlign:"left"}}>
 
                         <h5>Products from Japan</h5>
@@ -328,7 +326,8 @@ class App extends Component {
                         <h5>Contact Us</h5>
                         <p>
                             Monozuna Trade<br/><br/>
-                            Dhaka Office:
+                            Bangladesh Office:<br/>
+                            Savar-1349
                             <br/><br/>
                             Japan Office:<br/>
                             814-023, 福岡市早良区原田<br/>
