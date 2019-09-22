@@ -136,96 +136,86 @@ class PlaceOrder extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col" style={{padding: "1em 2em"}}>
-                    <div className="row">
+            <div className="col d-flex flex-wrap flex-row justify-content-around">
+                <div className="p-2 col-lg-4 col-md-4 col-sm-1">
+                    <div style={{textAlign: "left"}}>
                         <h6>Delivery Address</h6>
                     </div>
-                    <div className="row" style={{marginTop: "1em"}}>
+                    <div style={{marginTop: "1em"}}>
                         <input type="text" className="form-control" placeholder="Name" onChange={this.setUserName}/>
                     </div>
-                    <div className="row" style={{marginTop: ".5em"}}>
+                    <div style={{marginTop: ".5em"}}>
                         <input type="text" className="form-control" placeholder="Phone" onChange={this.setUserPhone}/>
                     </div>
-                    <div className="row" style={{marginTop: ".5em"}}>
+                    <div style={{marginTop: ".5em"}}>
                         <input type="text" className="form-control" placeholder="Email (optional)" onChange={this.setUserEmail}/>
                     </div>
-                    <div className="row" style={{marginTop: ".5em"}}>
+                    <div style={{marginTop: ".5em"}}>
                         <input type="text" className="form-control" placeholder="Address" onChange={this.setUserAddress}/>
                     </div>
-                    <div className="row" style={{marginTop: "1.5em"}}>
+                    <div style={{marginTop: "1.5em", textAlign: "left"}}>
                         <h6>Payment Method</h6>
                     </div>
-                    <div className="row" style={{marginTop: ".5em"}} onChange={this.selectPaymentMethod}>
+                    <div style={{marginTop: ".5em"}} onChange={this.selectPaymentMethod}>
                         <select className="form-control">
                             <option value="cash">Pay on delivery</option>
                             {/*<option value="bkash">bKash</option>*/}
                         </select>
                     </div>
                     {this.bkashOptions()}
-                    <div className="row" style={{marginTop: "2em"}}>
+                    <div style={{marginTop: "2em"}}>
                         <button className="btn btn-danger" onClick={this.placeOrder}>Place Order</button>
                     </div>
                 </div>
-                <div className="col-1">
-                </div>
-                <div className="col" style={{padding: "1em 3em"}}>
-                    <div className="row">
+                <div className="p-2 col-lg-4 col-md-4 col-sm-1">
+                    <div style={{textAlign: "left"}}>
                         <h6>Order Detail</h6>
                     </div>
-                    <div className="row">
-                        <div className="col-lg-6" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
+                    <div className="d-flex flex-row justify-content-between">
+                        <div className="col" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
                             Total Item
                         </div>
-                        <div className="col-lg-6" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
+                        <div className="col" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
                             {this.state.cartTotalItem}
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-lg-6" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
+                    <div className="d-flex flex-row justify-content-between">
+                        <div className="col" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
                             Item Subtotal
                         </div>
-                        <div className="col-lg-6" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
+                        <div className="col" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
                             {this.state.cartCost} Taka
                         </div>
                     </div>
-                    {/*<div className="row">*/}
-                    {/*    <div className="col-lg-6" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>*/}
-                    {/*        Vat (15%)*/}
-                    {/*    </div>*/}
-                    {/*    <div className="col-lg-6" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>*/}
-                    {/*        + {this.state.cartCost * .15} Taka*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    <div className="row">
-                        <div className="col-lg-6" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
+                    <div className="d-flex flex-row justify-content-between">
+                        <div className="col" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
                             Discount
                         </div>
-                        <div className="col-lg-6" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
+                        <div className="col" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
                             - {this.state.cartTotalDiscount} Taka
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-lg-6" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
+                    <div className="d-flex flex-row justify-content-between">
+                        <div className="col" style={{textAlign: "left",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
                            Shipping charge
                         </div>
-                        <div className="col-lg-6" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
+                        <div className="col" style={{textAlign: "right",  borderBottom: "1px solid #ddd", padding: ".5em 0", fontSize: "10pt"}}>
                             + {this.state.shippingCharge} Taka
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-lg-6" style={{textAlign: "left",  padding: ".5em 0", fontWeight: "bold", fontSize: "10pt"}}>
+                    <div className="d-flex flex-row justify-content-between">
+                        <div className="col" style={{textAlign: "left",  padding: ".5em 0", fontWeight: "bold", fontSize: "10pt"}}>
                             Grand Total
                         </div>
-                        <div className="col-lg-6" style={{textAlign: "right", padding: ".5em 0", fontWeight: "bold", fontSize: "10pt"}}>
+                        <div className="col" style={{textAlign: "right", padding: ".5em 0", fontWeight: "bold", fontSize: "10pt"}}>
                             = {this.state.grandTotal} Taka
                         </div>
                     </div>
-                    <div className="row" style={{marginTop: "1em"}}>
-                        <div className="col-lg-6" style={{textAlign: "left",  padding: ".5em 0",  fontSize: "10pt"}}>
+                    <div className="d-flex flex-row justify-content-between" style={{marginTop: "1em"}}>
+                        <div className="col" style={{textAlign: "left",  padding: ".5em 0",  fontSize: "10pt"}}>
                             Estimated delivery date
                         </div>
-                        <div className="col-lg-6" style={{textAlign: "right", padding: ".5em 0",  fontSize: "10pt"}}>
+                        <div className="col" style={{textAlign: "right", padding: ".5em 0",  fontSize: "10pt"}}>
                             {this.state.shippingDate}
                         </div>
                     </div>
