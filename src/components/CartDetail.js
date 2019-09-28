@@ -17,7 +17,8 @@ class CartDetail extends Component {
                 left: 0,
                 right: 0,
                 backgroundColor: "#ff569d50",
-                padding: "5em"
+                padding: "5em",
+                zIndex: 9999
             }}
             >
                 <div style={{

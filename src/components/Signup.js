@@ -6,7 +6,7 @@ class Signup extends Component {
         return (
             <div className="col">
                 <div className="row">
-                    <h6>Customer Registration</h6>
+                    <h6>Sign Up</h6>
                 </div>
                 <div className="row" style={{marginTop: "1em"}}>
                     <input type="text" className="form-control" required placeholder="Name"/>

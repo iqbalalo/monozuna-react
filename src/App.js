@@ -102,9 +102,10 @@ class App extends Component {
             cartItemList: cartItemList,
             showCartList: false
         });
-        console.log("cart info", cartTotalItem, cartCost, cartItemList);
-        console.log("cart product", cartProduct);
+        // console.log("cart info", cartTotalItem, cartCost, cartItemList);
+        // console.log("cart product", cartProduct);
         this.updateDB(cartProduct);
+        alert("New item has been added to your shopping cart.");
     };
 
     updateDB = (p) => {
@@ -122,7 +123,7 @@ class App extends Component {
                 "created": new Date()
             })
                 .then(function (response) {
-                    console.log("updateDB", response.data);
+                    // console.log("updateDB", response.data);
 
                 })
                 .catch(function (error) {
@@ -141,7 +142,7 @@ class App extends Component {
                 "created": new Date()
             })
                 .then(function (response) {
-                    console.log("updateDB", response.data);
+                    // console.log("updateDB", response.data);
 
                     localStorage.setItem('basket_id', response.data.basket_id);
 
@@ -224,6 +225,7 @@ class App extends Component {
             cartItemList: cartItemList
         });
         this.updateDB(cartProduct);
+        alert("Shopping cart has been modified!");
     };
 
     render() {
@@ -266,7 +268,7 @@ class App extends Component {
                     {/*<div className="col-lg-2">*/}
                     {/*    <CategoryMenu/>*/}
                     {/*</div>*/}
-                    <div className="col-lg-12">
+                    <div className="col-lg-12 col-md-3 col-sm-1">
                         <Route path="/" exact={true} component={Products}/>
                         <Route path="/products/:cat" exact={true} component={Products}/>
                         <Route path="/products/" exact={true} component={Products}/>
@@ -289,7 +291,7 @@ class App extends Component {
                         /> : null
                 }
                 <div className="row d-flex flex-row justify-content-between" style={{marginTop: "5em", background: "#f3d3e3",
-    color: "#ce3685", padding: "1em", fontSize: "9pt", position:"relative", bottom:0}}>
+    color: "#ce3685", padding: "1em", fontSize: "9pt"}}>
                     <div className="p-2 col-lg-8 col-md-8 col-sm-1" style={{textAlign:"left"}}>
 
                         <h5>Products from Japan</h5>
