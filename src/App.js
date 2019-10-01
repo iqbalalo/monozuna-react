@@ -4,6 +4,7 @@ import "./font_awesome/css/font-awesome.min.css";
 import './App.css';
 import Products from "./components/Products";
 import {Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 import Home from "./components/Home";
 import Orders from "./components/Orders";
 import Customers from "./components/Customers";
@@ -260,16 +261,11 @@ class App extends Component {
                 </div>
                 <div className="row">
                     <div className="col-lg-2">
-                        <a href={"/"}
-                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Home</a>
-                        <a href={"/products"}
-                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Products</a>
-                        <a href={"/orders"}
-                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Orders</a>
-                        <a href={"/customers"}
-                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Customers</a>
-                        <a href={"/settings"}
-                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Settings</a>
+                        <Link to={"/"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Home</Link>
+                        <Link to={"/products"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Products</Link>
+                        <Link to={"/orders"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Orders</Link>
+                        <Link to={"/customers"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Customers</Link>
+                        <Link to={"/settings"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Settings</Link>
                     </div>
                     <div className="col-lg-10">
                         <Route path="/" exact={true} component={Home}/>
