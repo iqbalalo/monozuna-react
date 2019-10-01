@@ -4,11 +4,10 @@ import "./font_awesome/css/font-awesome.min.css";
 import './App.css';
 import Products from "./components/Products";
 import {Route} from "react-router-dom";
-import ProductDetail from "./components/ProductDetail";
-import Cart from "./components/Cart";
-import CartDetail from "./components/CartDetail";
-import PlaceOrder from "./components/PlaceOrder";
-import Success from "./components/Success";
+import Home from "./components/Home";
+import Orders from "./components/Orders";
+import Customers from "./components/Customers";
+import Settings from "./components/Settings";
 
 const deepClone = require('lodash/cloneDeep');
 const axios = require('axios');
@@ -36,7 +35,7 @@ class App extends Component {
     };
 
     componentDidMount() {
-        this.getBasketInfo(basketId);
+        // this.getBasketInfo(basketId);
     }
 
     getBasketInfo = (basketId) => {
@@ -242,99 +241,42 @@ class App extends Component {
                             </div>
                             <div className="col">
                                 <div className="input-group mb-3">
-                                    {/*<input className="form-control" placeholder="Search"*/}
-                                    {/*       style={{borderColor: "#ffaed7"}}/>*/}
-                                    {/*<div className="input-group-append">*/}
-                                    {/*    <button className="btn btn-outline-danger" type="button" id="button-addon2">*/}
-                                    {/*        <i className="fas fa-search"/></button>*/}
-                                    {/*</div>*/}
-                                    <span style={{fontFamily: "Futura", width: "100%",  fontSize: "14pt"}}>Call Us (9am to 6pm)</span>
-                                    <span style={{fontFamily: "Futura", width: "100%", color:"brown",  fontSize: "24pt", fontWeight:"500"}}>01701039313</span>
+                                    <input className="form-control" placeholder="Search"
+                                           style={{borderColor: "#ffaed7"}}/>
+                                    <div className="input-group-append">
+                                        <button className="btn btn-outline-danger" type="button" id="button-addon2">
+                                            <i className="fas fa-search"/></button>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "right"}}>
-                                <Cart cartTotalItem={this.state.cartTotalItem}
-                                      cartCost={this.state.cartCost}
-                                      cartItems={this.state.cartItemList}
-                                      toggleCartList={this.toggleCartList}
-                                />
+                                <a href={"/"}
+                                   style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Sign In</a>
+                                <a href={"/"}
+                                   style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Sign Out</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row">
-                    {/*<div className="col-lg-2">*/}
-                    {/*    <CategoryMenu/>*/}
-                    {/*</div>*/}
-                    <div className="col-lg-12">
-                        <Route path="/" exact={true} component={Products}/>
-                        <Route path="/products/:cat" exact={true} component={Products}/>
-                        <Route path="/products/" exact={true} component={Products}/>
-                        <Route path="/products/:cat/:id" exact={true}
-                               render={(routeProps) => (<ProductDetail {...routeProps} addToCart={this.addToCart}/>)}/>
-                        <Route path="/order/" exact={true}
-                               render={(routeProps) => (<PlaceOrder {...routeProps}/>)}/>
-                        <Route path="/success/:id" exact={true}
-                               render={(routeProps) => (<Success {...routeProps} getBasketInfo={this.getBasketInfo}/>)}/>
+                    <div className="col-lg-2">
+                        <a href={"/"}
+                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Home</a>
+                        <a href={"/products"}
+                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Products</a>
+                        <a href={"/orders"}
+                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Orders</a>
+                        <a href={"/customers"}
+                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Customers</a>
+                        <a href={"/settings"}
+                           style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Settings</a>
                     </div>
-                </div>
-
-                {
-                    this.state.showCartList ?
-                        <CartDetail cartTotalItem={this.state.cartTotalItem} cartItemList={this.state.cartItemList}
-                                    cartCost={this.state.cartCost}
-                                    toggleCartList={this.toggleCartList}
-                                    removeFromCart={this.removeFromCart}
-                                    updateCart={this.updateCart}
-                        /> : null
-                }
-                <div className="row d-flex flex-row justify-content-between" style={{marginTop: "5em", background: "#f3d3e3",
-    color: "#ce3685", padding: "1em", fontSize: "9pt", position:"relative", bottom:0}}>
-                    <div className="p-2 col-lg-8 col-md-8 col-sm-1" style={{textAlign:"left"}}>
-
-                        <h5>Products from Japan</h5>
-                        <div className="d-flex flex-row justify-content-between">
-                            <div className="p-2">
-                                <ul style={{padding: "0"}}>
-                                    <li>Acne spot remover cream</li>
-                                    <li>Pregnancy spot prevention cream</li>
-                                    <li>Skin whitening and moisturizer cream</li>
-                                    <li>Beauty face mask</li>
-                                    <li>Female menstrual pain remover</li>
-                                </ul>
-                            </div>
-                            <div className="p-2">
-                                <ul style={{padding: "0"}}>
-                                    <li>Men hair growth</li>
-                                    <li>Elders' Knee & Joint pain remover</li>
-                                </ul>
-                            </div>
-                            <div className="p-2">
-                                <ul style={{padding: "0"}}>
-                                    <li>Baby medicated body soap</li>
-                                    <li>Baby medicated shampoo</li>
-                                    <li>Baby milk powder for 0 - 1 year age</li>
-                                    <li>Baby milk powder for 1 - 2 year age</li>
-                                </ul>
-                            </div>
-                            <div className="p-2">
-                                <ul style={{padding: "0"}}>
-                                    <li>Mosquito repellent</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="p-2 col-lg-3 col-md-3 col-sm-1" style={{textAlign:"left"}}>
-                        <h5>Contact Us</h5>
-                        <p>
-                            Monozuna Trade<br/><br/>
-                            Bangladesh Office:<br/>
-                            Ashulia, Savar EPZ
-                            <br/><br/>
-                            Japan Office:<br/>
-                            814-023, 福岡市早良区原田<br/>
-                            Mobile: +81 70 2162 6806<br/>
-                        </p>
+                    <div className="col-lg-10">
+                        <Route path="/" exact={true} component={Home}/>
+                        <Route path="/products" exact={true} component={Products}/>
+                        <Route path="/orders" exact={true} component={Orders}/>
+                        <Route path="/customers" exact={true} component={Customers}/>
+                        <Route path="/settings" exact={true} component={Settings}/>
                     </div>
                 </div>
             </div>
