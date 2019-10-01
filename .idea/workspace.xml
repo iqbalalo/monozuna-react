@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15a98c71-9454-4f4f-aad8-fc8aefb6b7e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Customers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Orders.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Settings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Signup.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -247,12 +238,12 @@
       <workItem from="1569501300850" duration="4886000" />
       <workItem from="1569657873162" duration="17000" />
       <workItem from="1569659370972" duration="19000" />
-      <workItem from="1569663854966" duration="7424000" />
+      <workItem from="1569663854966" duration="7678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177015000" />
+    <option name="totallyTimeSpent" value="177269000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="801" extended-state="0" />
