@@ -268,7 +268,7 @@ class App extends Component {
                     {/*<div className="col-lg-2">*/}
                     {/*    <CategoryMenu/>*/}
                     {/*</div>*/}
-                    <div className="col-lg-12 col-md-3 col-sm-1">
+                    <div className="col-lg-12 col-md-12 col-sm-1">
                         <Route path="/" exact={true} component={Products}/>
                         <Route path="/products/:cat" exact={true} component={Products}/>
                         <Route path="/products/" exact={true} component={Products}/>
