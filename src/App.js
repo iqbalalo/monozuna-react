@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Orders from "./components/Orders";
 import Customers from "./components/Customers";
 import Settings from "./components/Settings";
+import OrderDetail from "./components/OrderDetail";
 
 const deepClone = require('lodash/cloneDeep');
 const axios = require('axios');
@@ -251,26 +252,24 @@ class App extends Component {
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "right"}}>
-                                <a href={"/"}
-                                   style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Sign In</a>
-                                <a href={"/"}
-                                   style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Sign Out</a>
+                                <button className="btn btn-link" style={{color: "#bd2130"}}>Sign In</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-lg-2">
-                        <Link to={"/"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Home</Link>
-                        <Link to={"/products"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Products</Link>
-                        <Link to={"/orders"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Orders</Link>
-                        <Link to={"/customers"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Customers</Link>
-                        <Link to={"/settings"} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>Settings</Link>
+                        <Link to={"/"} style={{textAlign:"left", display:"block", padding:".3em", color:"#bd2130", marginTop: "5px" }}>Home</Link>
+                        <Link to={"/products"} style={{textAlign:"left", display:"block", padding:".3em", color:"#bd2130", marginTop: "5px" }}>Products</Link>
+                        <Link to={"/orders"} style={{textAlign:"left", display:"block", padding:".3em", color:"#bd2130", marginTop: "5px" }}>Orders</Link>
+                        <Link to={"/customers"} style={{textAlign:"left", display:"block", padding:".3em", color:"#bd2130", marginTop: "5px" }}>Customers</Link>
+                        <Link to={"/settings"} style={{textAlign:"left", display:"block", padding:".3em", color:"#bd2130", marginTop: "5px" }}>Settings</Link>
                     </div>
                     <div className="col-lg-10">
                         <Route path="/" exact={true} component={Home}/>
                         <Route path="/products" exact={true} component={Products}/>
                         <Route path="/orders" exact={true} component={Orders}/>
+                        <Route path="/orders/:order_date/:basket_id" exact={true} component={OrderDetail}/>
                         <Route path="/customers" exact={true} component={Customers}/>
                         <Route path="/settings" exact={true} component={Settings}/>
                     </div>

@@ -32,7 +32,7 @@ class CategoryMenu extends Component {
 
   render() {
     return this.state.categories.map(c => (
-        <a key={"menuitem-" + c.id} href={"/products/" + (c.id === "all" ? "" : c.id)} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>{c.name}</a>
+        <a key={"menuitem-" + c.id} href={"/products/" + (c.id === "all" ? "" : c.id)} style={{textAlign:"left", display:"block", padding:".3em", color:"#bd2130", marginTop: "5px" }}>{c.name}</a>
         // <Link target="_self" key={"menuitem-" + c.id} to={"/products/" + (c.id === "all" ? "" : c.id)} style={{textAlign:"left", display:"block", padding:".3em", color:"#ff77bc", marginTop: "5px" }}>{c.value}</Link>
     ))
   }
