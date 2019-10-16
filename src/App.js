@@ -251,7 +251,7 @@ class App extends Component {
                                     {/*        <i className="fas fa-search"/></button>*/}
                                     {/*</div>*/}
                                     <span style={{fontFamily: "Futura", width: "100%",  fontSize: "14pt"}}>Call Us (9am to 6pm)</span>
-                                    <span style={{fontFamily: "Futura", width: "100%", color:"brown",  fontSize: "24pt", fontWeight:"500"}}>01701039313</span>
+                                    <span style={{fontFamily: "Futura", width: "100%", color:"brown",  fontSize: "20pt", fontWeight:"500"}}>01922676995 or 01675248137</span>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "right"}}>
