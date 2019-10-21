@@ -239,7 +239,7 @@ class App extends Component {
                                 <a href="/" style={{textDecoration: "none"}}>
                                     <span style={{display:"block",　color: "#eb3479", fontSize: "8pt", position: "absolute"}}>モノツナ</span>
                                     <span style={{display:"block",　fontWeight: "bold", color: "#eb3479", fontSize: "24pt"}}>monozuna</span>
-                                    <span style={{display:"block",　color: "#ce3685", fontSize: "9pt"}}>Japanese product for global people</span>
+                                    <span style={{display:"block",　color: "#ce3685", fontSize: "9pt"}}>Japanese product around the world</span>
                                 </a>
                             </div>
                             <div className="col">
