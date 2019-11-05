@@ -233,13 +233,13 @@ class App extends Component {
             <div className="App container-fluid">
                 <div className="row">
                     <div className="col-lg-12 col-md-12 col-sm-1 top_nav_stamp"
-                         style={{padding: "1em", background: "#ffcae5", marginBottom: ".5em"}}>
+                         style={{padding: "1em", background: "rgb(249, 162, 162)", marginBottom: ".5em"}}>
                         <div className="row">
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "left"}}>
                                 <a href="/" style={{textDecoration: "none"}}>
-                                    <span style={{display:"block",　color: "#eb3479", fontSize: "8pt", position: "absolute"}}>モノツナ</span>
-                                    <span style={{display:"block",　fontWeight: "bold", color: "#eb3479", fontSize: "24pt"}}>monozuna</span>
-                                    <span style={{display:"block",　color: "#ce3685", fontSize: "9pt"}}>Japanese product around the world</span>
+                                    <span style={{display:"block",　color: "rgb(99, 1, 1)", fontSize: "8pt", position: "absolute"}}>モノツナ</span>
+                                    <span style={{display:"block",　fontWeight: "bold", color: "rgb(99, 1, 1)", fontSize: "24pt"}}>monozuna</span>
+                                    <span style={{display:"block",　color: "#000", fontSize: "8pt", marginTop:"-8px"}}>Quality product from Japan</span>
                                 </a>
                             </div>
                             <div className="col">
@@ -290,8 +290,8 @@ class App extends Component {
                                     updateCart={this.updateCart}
                         /> : null
                 }
-                <div className="row d-flex flex-row justify-content-between" style={{marginTop: "5em", background: "#f3d3e3",
-    color: "#ce3685", padding: "1em", fontSize: "9pt"}}>
+                <div className="row d-flex flex-row justify-content-between" style={{marginTop: "5em", background: "rgb(249, 162, 162)",
+    color: "rgb(99, 1, 1)", padding: "1em", fontSize: "9pt"}}>
                     <div className="p-2 col-lg-8 col-md-8 col-sm-1" style={{textAlign:"left"}}>
 
                         <h5>Products from Japan</h5>
