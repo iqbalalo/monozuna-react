@@ -233,7 +233,7 @@ class App extends Component {
             <div className="App container-fluid">
                 <div className="row">
                     <div className="col-lg-12 col-md-12 col-sm-1 top_nav_stamp"
-                         style={{padding: "1em", background: "rgb(249, 162, 162)", marginBottom: ".5em"}}>
+                         style={{padding: "1em", background: "rgb(255, 189, 189)", marginBottom: ".5em"}}>
                         <div className="row">
                             <div className="col-lg-4 col-md-4 col-sm-1" style={{textAlign: "left"}}>
                                 <a href="/" style={{textDecoration: "none"}}>
@@ -290,9 +290,9 @@ class App extends Component {
                                     updateCart={this.updateCart}
                         /> : null
                 }
-                <div className="row d-flex flex-row justify-content-between" style={{marginTop: "5em", background: "rgb(249, 162, 162)",
+                <div className="row d-flex flex-row justify-content-between" style={{marginTop: "5em", background: "rgb(255, 189, 189)",
     color: "rgb(99, 1, 1)", padding: "1em", fontSize: "9pt"}}>
-                    <div className="p-2 col-lg-8 col-md-8 col-sm-1" style={{textAlign:"left"}}>
+                    <div className="p-2 col-lg-8 col-md-12 col-sm-1" style={{textAlign:"left"}}>
 
                         <h5>Products from Japan</h5>
                         <div className="d-flex flex-row justify-content-between">
